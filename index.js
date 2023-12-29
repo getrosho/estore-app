@@ -27,6 +27,8 @@ app.use( notFound );
 app.use( errorHandler );
 
 // Start the server and listen on the specified port
+dbConnet().then(() => {
 app.listen( PORT, () => {
   console.log( `Server is listening on port ${ PORT }` );
+  })
 } );
