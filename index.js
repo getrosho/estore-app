@@ -11,9 +11,15 @@ const { notFound, errorHandler } = require( './middlewares/errorHandler' ); // C
 // Connect to the database
 dbConnet();
 
+
+
 // Use bodyParser middleware for handling JSON and form data
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: false } ) );
+
+app.get( '/home', ( req, res ) => {
+  res.send( 'Hello World!' )
+} )
 
 // Use the authRouter for the "/api/user" route
 app.use( '/api/user', authRouter );
