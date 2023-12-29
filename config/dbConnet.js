@@ -5,7 +5,7 @@ const mongoose = require( "mongoose" ); // Mongoose for interacting with MongoDB
 const dbConnect = () => {
   try {
     // Attempt to connect to the MongoDB database using the provided URL
-    const conn = mongoose.connect( process.env.MONGODB_URL );
+    const conn = mongoose.connect( process.env.MONGO_URI );
 
     // Log a message if the connection is successful
     console.log( 'Database Connected' );
