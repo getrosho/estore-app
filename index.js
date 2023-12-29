@@ -7,17 +7,16 @@ const PORT = 5000; // Port on which the server will listen
 const authRouter = require( './routes/authRoute' ); // Router for authentication-related routes
 const bodyParser = require( 'body-parser' ); // Middleware for parsing request bodies
 const { notFound, errorHandler } = require( './middlewares/errorHandler' ); // Custom error handling middlewares
+const serverless = require( 'serverless-http' )
 
 // Connect to the database
 dbConnet();
-
-
 
 // Use bodyParser middleware for handling JSON and form data
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: false } ) );
 
-app.get( '/home', ( req, res ) => {
+app.get( '/', ( req, res ) => {
   res.send( 'Hello World!' )
 } )
 
@@ -32,3 +31,5 @@ app.use( errorHandler );
 app.listen( PORT, () => {
   console.log( `Server is listening on port ${ PORT }` );
 } );
+
+module.exports.handler = serverless( app )
