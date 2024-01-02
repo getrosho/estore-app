@@ -63,6 +63,7 @@ const getaUser = expressAsyncHandler( async ( req, res ) => {
   try {
     const getaUser = await User.findById( id );
     res.json( getaUser )
+    console.log( getaUser )
   } catch ( error ) {
     res.status( 500 ).json( { message: 'Error getting user', error: error.message } );
   }
